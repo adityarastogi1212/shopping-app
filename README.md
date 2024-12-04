@@ -39,6 +39,7 @@ A: Discount code applies to the entire order.
 
 All the best to me!
 
+**************************************************************************************************************************************************************
 
 Technology Stack and Architecture-
 
@@ -66,3 +67,30 @@ Admin APIs
 Verifies provided nth order condition and returns new discount code.
 -Order Summary (GET /admin/summary)
 Returns list of purchased items, total revenue, discount codes used and total discount amount.
+
+
+Design Details
+
+Data Models
+Cart: Maintains item list, quantity and per-user cart.
+Orders status: Monitor completed orders and discounts.
+Discounts: Makes discount codes and tracks their usage and validity
+
+
+Key Functionalities
+-Adding Items to Cart:
+Takes user_id, item_id, quantity and price argument
+We will add the item to the user cart.
+
+-Checkout:
+Calculates the total price.
+Validates and applies discount codes.
+It saves the order and empties the cart.
+
+-Admin:
+If nth order condition satisfied generates discount codes
+Tracks orders, revenue, and discounts, and summarizes.
+
+-Validation:
+Discount codes can be used only once.
+The codes apply to the value of the cart in total.
