@@ -37,4 +37,32 @@ Q: Does the discount code apply to one item?
 
 A: Discount code applies to the entire order.
 
-All the best!
+All the best to me!
+
+
+Technology Stack and Architecture-
+
+Framework: either Flask (for pseudo async) or FastAPI (for real async) - using flask
+Storage: In-memory data structures (e.g., Python dictionaries or lists)
+Testing: unittest or pytest
+Testing: Run tests but add a note on how to rebuild the database.
+Frontend/UI: Minimal UI using React or plain HTML/CSS if the time allows - try for plain html/css if required, for now postman requests
+Tools: Postman Tool to test APIs, Pycharm for python code.
+
+
+API Endpoints-
+
+Cart Management
+-Add Item to Cart (POST /cart)
+-View Cart (GET /cart)
+
+Checkout
+-Checkout order (POST /checkout)
+Validates (if applicable) and applies a discount code to the total.
+Finalizes the order.
+
+Admin APIs
+-Generate Discount Code (POST /admin/discount)
+Verifies provided nth order condition and returns new discount code.
+-Order Summary (GET /admin/summary)
+Returns list of purchased items, total revenue, discount codes used and total discount amount.
