@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: E-commerce API
+  version: 1.0.0
+paths:
+  /cart:
+    post:
+      summary: Add item to cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                item_id:
+                  type: string
+                quantity:
+                  type: integer
+                price:
+                  type: number
+      responses:
+        '200':
+          description: Item added to cart
+  /checkout:
+    post:
+      summary: Checkout cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                discount_code:
+                  type: string
+      responses:
+        '200':
+          description: Order successfully placed
+
