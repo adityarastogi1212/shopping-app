@@ -5,9 +5,10 @@ app = Flask(__name__)
 
 # In-memory store
 data = {
-    "carts": {},  # user_id -> [{"item_id": ..., "quantity": ..., "price": ...}, ...]
-    "orders": [],  # [{"user_id": ..., "total": ..., "discount": ..., "final_total": ...}]
-    "discounts": [],  # [{"code": ..., "order_id": ..., "used": ...}]
+    "users": [],  # List of registered users (optional for simulation)
+    "carts": {},  # user_id -> [{"item_id": ..., "quantity": ..., "price": ...}]
+    "orders": [],  # [{"user_id": ..., "total": ..., "discount": ..., "final_total": ..., "timestamp": ...}]
+    "discounts": [],  # [{"code": ..., "order_id": ..., "used": ..., "generated_at": ...}]
 }
 
 NTH_ORDER = 5
