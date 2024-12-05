@@ -94,3 +94,9 @@ Tracks orders, revenue, and discounts, and summarizes.
 -Validation:
 Discount codes can be used only once.
 The codes apply to the value of the cart in total.
+
+Next Steps
+-Add validation for inputs and error handling.
+-Write unit tests to ensure API functionality.
+-Optionally, build a simple React or HTML-based UI for testing.
+
