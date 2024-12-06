@@ -1,0 +1,120 @@
+Steps to Test Using Postman
+
+#Start the Flask Application
+
+#Execute flask app in terminal- python app.py
+This will cause the server to start usually on http://127.0.0.1:5000
+
+#Open Postman
+-Set the Base URL
+-The Base URI to make a request for any resources
+-Test Each Endpoint
+-Make the requests in Postman for each of our api endpoint
+
+#API Endpoints to Test
+
+-Add Items to Cart
+http://127.0.0.1:5000/cart
+Method: POST
+Headers: Content-Type: application/json
+Payload: { "user_id" : "user1", "item_id": "item1", "quantity" : 2, price:100 }
+Expected Response:
+{ "message" : "Item added to cart" }
+
+-Get Cart
+URL: http://127.0.0.1:5000/cart?user_id=user1
+Method: GET
+Headers: None
+Expected Response:
+{
+  "cart": [
+    {
+      "item_id": "item1",
+      "quantity": 2,
+      "price": 100
+    }
+  ]
+}
+
+-Checkout
+URL: http://127.0.0.1:5000/checkout
+Method: POST
+Headers: Content-Type: application/json
+Payload: 
+{
+  "user_id": "user1",
+  "discount_code": null
+}
+Expected Response:
+{
+  "message": "Order placed",
+  "final_total": 200
+}
+
+-Generate Discount Code (Admin)
+URL: http://127.0.0.1:5000/admin/discount
+Method: POST
+Headers: None
+Expected Response (if the nth-order condition is met):
+{
+  "message": "Discount code generated",
+  "code": "abcd1234"
+}
+
+-Admin Summary
+URL: http://127.0.0.1:5000/admin/summary
+Method: GET
+Headers: None
+Expected Response:
+{
+  "total_orders": 1,
+  "total_revenue": 200,
+  "total_discount": 0,
+  "discount_codes": [
+    {
+      "code": "abcd1234",
+      "order_id": null,
+      "used": false,
+      "generated_at": 1693555200
+    }
+  ]
+}
+
+
+***************************************************************************************************************
+
+Additional Notes for Postman and Check points
+
+#Import Swagger YAML:
+To simplify testing, you can import the swagger.yaml file into Postman:
+-Open Postman.
+-Click Import in the top left corner.
+-Upload the swagger.yaml file.
+-Postman will auto-generate the API requests for you.
+
+#Testing with Discount Code:
+First, generate a discount code (when the nth order is placed).
+Use the generated code in the checkout endpoint:
+{
+  "user_id": "user1",
+  "discount_code": "abcd1234"
+}
+
+#Testing Multiple Users:
+-Use different user_id values to simulate different users.
+-Add items to their carts and place orders.
+
+#Verify Edge Cases:
+-Checkout an empty cart.
+-Use an invalid or already-used discount code.
+-Generate a discount code when the nth-order condition is not met.
+
+
+***************************************************************************************************************
+
+Expected Workflow-
+Add items to the cart (/cart - POST).
+View the cart (/cart - GET).
+Checkout the cart (/checkout - POST).
+Generate discount codes as orders are placed (/admin/discount - POST).
+View the admin summary (/admin/summary - GET).
