@@ -1,0 +1,17 @@
+- test_name: Add to Cart
+  method: POST
+  endpoint: /cart
+  payload:
+    user_id: user1
+    item_id: item1
+    quantity: 2
+    price: 100
+  expected_status: 200
+
+- test_name: Checkout
+  method: POST
+  endpoint: /checkout
+  payload:
+    user_id: user1
+  expected_status: 200
+
